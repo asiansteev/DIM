@@ -13,7 +13,7 @@
       bindToController: true,
       scope: {},
       template: [
-        '<div ng-repeat="store in vm.stores" class="storage" ng-class="{ guardian: store.id !== \'vault\', vault: store.id === \'vault\' }">',
+        '<div ng-repeat="store in vm.stores" class="{{ :: vm.getClassName(store) }}">',
         '  <div dim-store-heading store-data="store"></div>',
         '  <div dim-store-items store-data="store"></div>',
         '</div>'
@@ -27,6 +27,9 @@
     var vm = this;
 
     vm.stores = null;
+    vm.getClassName = function (store) {
+      return 'storage ' + ((store.id !== 'vault') ? 'guardian' : 'vault');
+    };
 
     $scope.$on('dim-active-platform-updated', function(e, args) {
       var promise = $q.when(dimStoreService.getStores(true))

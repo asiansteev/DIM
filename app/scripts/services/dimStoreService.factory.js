@@ -404,9 +404,13 @@
           stats: item.stats,
           maxStackSize: definitions[item.itemHash].maxStackSize,
           classType: itemDef.classType,
+          itemType: itemDef.itemType,
+          itemSubType: itemDef.itemSubType,
           /* 0: titan, 1: hunter, 2: warlock, 3: any */
           dmg: dmgName,
-          visible: true
+          visible: true,
+          primitive: item,
+          primitiveDef: itemDef
         };
 
         if (item.itemHash === 2809229973) { // Necrochasm

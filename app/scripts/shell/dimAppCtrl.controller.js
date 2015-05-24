@@ -3,9 +3,9 @@
 
   angular.module('dimApp').controller('dimAppCtrl', DimApp);
 
-  DimApp.$inject = ['ngDialog'];
+  DimApp.$inject = ['ngDialog', 'checkWatchers', '$timeout'];
 
-  function DimApp(ngDialog) {
+  function DimApp(ngDialog, checkWatchers, $timeout) {
     var vm = this;
     var aboutResult = null;
     var supportResult = null;
@@ -18,6 +18,10 @@
         aboutResult.close();
       } else {
         ngDialog.closeAll();
+
+        $timeout(function() {
+          alert(checkWatchers('body'));
+        }, 500);
 
         aboutResult = ngDialog.open({
           template: 'views/about.html',

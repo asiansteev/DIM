@@ -20,12 +20,12 @@
       <div class="content">
         <span class="header-right">
           <div dim-platform-choice class="header-right"></div>
-          <div dim-search-filter class="header-right"></div>
-          <div class="header-right"><span class="link" ng-click="app.showFilters($event)">Filters</span></div>
+          <!-- <div dim-search-filter class="header-right"></div> -->
+          <!-- <div class="header-right"><span class="link" ng-click="app.showFilters($event)">Filters</span></div> -->
         </span>
         <span>Destiny Item Manager v3</span>
         <span class="link" ng-click="app.showAbout($event)">About</span>
-        <span class="link" ng-click="app.showSupport($event)">Support DIM</span>
+        <!-- <span class="link" ng-click="app.showSupport($event)">Support DIM</span> -->
         <div class="my-super-awesome-loading-box" ng-show="loadingTracker.active()">
           <img src="images/712.GIF" style="width: 22px !important; height: 22px !important;" alt="" />
         </div>
@@ -33,8 +33,8 @@
     </div>
     <toaster-container toaster-options="{ 'time-out': 10000, limit: 6 }"></toaster-container>
     <div class="about modal-dialog" ng-show="app.about"></div>
-    <div class="donate modal-dialog" ng-show="app.donate"></div>
-    <div class="filters modal-dialog" ng-show="app.filters"></div>
+    <!-- <div class="donate modal-dialog" ng-show="app.donate"></div> -->
+    <!-- <div class="filters modal-dialog" ng-show="app.filters"></div> -->
     <div id="content" ui-view></div>
   </div>
 
@@ -71,7 +71,7 @@
   <script src="scripts/shell/dimPlatformChoice.directive.js"></script>
   <script src="scripts/shell/dimSearchFilter.directive.js"></script>
   <script src="scripts/shell/dimClickAnywhereButHere.directive.js"></script>
-  <script src="scripts/store/dimStores.directive.js"></script>
+  <script src="scripts/store/dimStoresCtrl.controller.js"></script>
   <script src="scripts/store/dimStoreItems.directive.js"></script>
   <script src="scripts/store/dimStoreItem.directive.js"></script>
   <script src="scripts/store/dimStoreHeading.directive.js"></script>

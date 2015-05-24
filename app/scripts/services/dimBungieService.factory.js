@@ -2,12 +2,56 @@
   'use strict';
 
   angular.module('dimApp')
+    .factory('checkWatchers', function() {
+      return function(query) {
+        var scope;
+        var watchers = 0;
+        var aoEl = document.querySelector(query);
+        if (!aoEl) {
+          return;
+        }
+        var elementsWithScope = aoEl.querySelectorAll('.ng-scope');
+        for (var i = 0; i < elementsWithScope.length; i++) {
+          scope = angular.element(elementsWithScope[i]).scope();
+          if (scope.$$watchers !== null) {
+            watchers += scope.$$watchers.length;
+          }
+        }
+        return watchers;
+      };
+    })
+    // .directive('postRepeatDirective', ['$timeout', '$log', 'TimeTracker',
+    //   function($timeout, $log, TimeTracker) {
+    //     return function(scope, element, attrs) {
+    //       if (scope.$last) {
+    //         $timeout(function() {
+    //           var timeFinishedLoadingList = TimeTracker.reviewListLoaded();
+    //           var ref = new Date(timeFinishedLoadingList);
+    //           var end = new Date();
+    //           $log.debug("## DOM rendering list took: " + (end - ref) + " ms");
+    //         });
+    //       }
+    //     };
+    //   }
+    // ])
+    .directive('postRepeatDirective', ['$timeout',
+      function($timeout) {
+        return function(scope) {
+          if (scope.$first)
+            window.a = new Date(); // window.a can be updated anywhere if to reset counter at some action if ng-repeat is not getting started from $first
+          if (scope.$last)
+            $timeout(function() {
+              console.log("## DOM rendering list took: " + (new Date() - window.a) + " ms");
+            });
+        };
+      }
+    ])
     .factory('dimBungieService', BungieService);
 
   BungieService.$inject = ['$rootScope', '$q', '$timeout', '$http', 'dimState', 'rateLimiterQueue', 'toaster'];
 
   function BungieService($rootScope, $q, $timeout, $http, dimState, rateLimiterQueue, toaster) {
-    var apiKey = '57c5ff5864634503a0340ffdfbeb20c0';
+    var apiKey = 'a1a1e48ca23a4dcd941f544dff1a29cb';
     var tokenPromise = null;
     var platformPromise = null;
     var membershipPromise = null;

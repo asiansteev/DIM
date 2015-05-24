@@ -1,2 +1,24 @@
-<div dim-stores></div>
-<div dim-loadout></div>
+<div ng-controller="dimStoresCtrl as storesvm">
+  <div ng-repeat="store in storesvm.stores" class="{{  storesvm.getClassName(store) }}">
+    <div class="character">
+      <div class="character-box" ng-class="{ 'vault-box': !store.isCharacter }" style="background-image: url({{ store.characterBoxUrl }});">
+        <div class="emblem" ng-if="store.isCharacter" style="background-image: url({{ store.emblemUrl }});"></div>
+        <div class="class">{{ store.name }}</div>
+        <div class="race-gender" ng-if="store.isCharacter">{{ store.race }} {{ store.gender }}</div>
+        <div class="level" ng-if="store.isCharacter" ng-class="{ 'prestige': store.hasPrestiged, 'maxLevel': store.maxLevel }">{{ store.level }}</div>
+        <div class="levelBar" ng-if="store.isCharacter">
+          <div class="barFill" ng-class="{ 'prestige' : store.hasPrestiged }" style="width: {{  vm.percentToNextLevel + '%' }};"></div>
+        </div>
+      </div>
+      <div class="loadout-button" ng-if="store.isCharacter">&#x25BC;</div>
+      <div loadout-id="{{ store.id }}" style="position: relative;"></div>
+    </div>
+  </div>
+  <div style="float: left;">
+    <div ng-repeat="item in storesvm.organizedItems track by item.index" post-repeat-directive>{{ item.itemSubType + " " + item.type + " " + item.name }}</div>
+  </div>
+  <div style="float: left;">
+    <div ng-repeat="item in storesvm.model.items track by item.index" post-repeat-directive>{{ item.itemSubType + " " + item.type + " " + item.name }}</div>
+  </div>
+</div>
+<!-- <div dim-loadout></div> -->
