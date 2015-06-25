@@ -3,11 +3,15 @@ dist/
 .settings/
 .idea/
 node_modules/
-build/common
-build/img
-build/manifest
-build/*.json
-build/manifest.zip
+build/
+.tmp/
+bower_components/
+manifest-build/common
+manifest-build/img
+manifest-build/manifest
+manifest-build/*.json
+manifest-build/*.txt
+manifest-build/manifest.zip
 
 !do-not-delete.txt
-!build/img/misc/missing_icon.png
+!manifest-build/img/misc/missing_icon.png
