@@ -18,7 +18,11 @@
 
     return service;
 
-    function getNextIndex() {
+    function getNextIndex(item) {
+      if (item && item.itemInstanceId > 0) {
+        return item.itemInstanceId;
+      }
+
       return _index++;
     }
 
@@ -391,7 +395,7 @@
         var dmgName = [null, 'kinetic', 'arc', 'solar', 'void'][item.damageType];
 
         var createdItem = {
-          index: getNextIndex(),
+          index: getNextIndex(item),
           owner: owner,
           hash: item.itemHash,
           type: itemType,

@@ -44,8 +44,8 @@
           .style.backgroundImage = 'url(' + chrome.extension.getURL(vm.item.icon) + ')';
       });
 
-      // element[0].querySelector('.img')
-      //   .style.backgroundImage = 'url(' + 'http://www.bungie.net' + vm.item.icon + ')';
+      element[0].querySelector('.img')
+        .style.backgroundImage = 'url(' + 'http://www.bungie.net' + vm.item.icon + ')';
 
       vm.clicked = function openPopup(item, e) {
         e.stopPropagation();
