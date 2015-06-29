@@ -387,6 +387,7 @@
           owner: owner,
           hash: item.itemHash,
           type: itemType,
+          weapontype: itemDef.itemTypeName,
           sort: itemSort,
           tier: itemDef.tierTypeName,
           name: itemDef.itemName,
