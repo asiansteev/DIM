@@ -47,7 +47,7 @@
               special = 'elemental';
             } else if (['primary', 'special', 'heavy', 'helmet', 'leg', 'gauntlets', 'chest', 'class', 'classitem'].indexOf(filterResult) >= 0) {
               special = 'type';
-            } else if (['scoutrifle', 'pulserifle', 'autorifle', 'handcannon', 'shotgun', 'sidearm', 'sniperrifle', 'fusionrifle', 'machinegun', 'rocketlauncher'].indexOf(filterResult) >= 0) {
+            } else if (['scout rifle', 'pulse rifle', 'auto rifle', 'hand cannon', 'shotgun', 'sidearm', 'sniper rifle', 'fusion rifle', 'machine gun', 'rocket launcher'].indexOf(filterResult) >= 0) {
               special = 'weapontype';
             } else if (['common', 'uncommon', 'rare', 'legendary', 'exotic'].indexOf(filterResult) >= 0) {
               special = 'tier';
